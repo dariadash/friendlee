@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import initReducer from './initSlice'
+import initReducer from './calculator/initSlice'
 
 const rootReducer = combineReducers({
     initReducer,

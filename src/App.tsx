@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { decrement, increment } from "./initSlice";
+import { useAppDispatch, useAppSelector } from "./features/hooks";
+import { decrement, increment } from "./features/calculator/initSlice";
 
 export function App() {
     const count = useAppSelector((state) => state.initReducer.value)
