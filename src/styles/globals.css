@@ -9,6 +9,11 @@
     --button-background: #FF9514;
     --button-color: #FFFFFF;
     --button-hover: #111111;
+
+    --mobile-s: 320px;
+    --table: 768px;
+    --laptop: 1120px;
+    --laptop-l: 1440px;
 }
 
 * {
@@ -50,6 +55,14 @@ h1 {
     font-weight: 900;
     font-size: 54px;
     line-height: 90%;
+
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: 34px;
+        line-height: 90%;
+    }
 }
 
 h2 {
@@ -58,6 +71,22 @@ h2 {
     font-weight: 900;
     font-size: 30px;
     line-height: 36px;
+    color: #575757;
+}
+
+@media (max-width: 320px) {
+    h2 {
+        font-size: 22px;
+        line-height: 20px;
+    }
+}
+
+h3 {
+    font-family: 'Nekst', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 120%;
     color: #575757;
 }
 

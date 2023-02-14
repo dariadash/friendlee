@@ -8,7 +8,9 @@ type Props = {
     type?: string
     disabled?: boolean
     min: number,
-    max: number
+    max: number,
+    percent?: number,
+    label?: string,
 }
 
 export const Input: React.FC<Props> = ({
@@ -18,23 +20,30 @@ export const Input: React.FC<Props> = ({
     placeholder,
     disabled,
     min,
-    max
+    max,
+    children,
+    percent,
+    label
 }) => {
 
     const getBackgroundSize = () => {
-        return { backgroundSize: `${Math.ceil((Number(value) * 100) / max)}% 100%` };
+        return { backgroundSize: percent ? `${percent}% 100%` : `${100 / (max / (Number(value)))}% 100%` };
     };
 
     return (
-        <div className='wrapper'>
+        <div className='wrapper' aria-disabled={disabled}>
+            <p className='input_label'>{label}</p>
             <input
                 disabled={disabled}
                 type={type}
                 placeholder={placeholder}
-                value={value}
+                min={min}
+                // max={max}
+                value={value.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')}
                 onChange={(e) => onChange(e.target.value)}
                 className='input_element'
             />
+            <div className='children'>{children}</div>
             <div className='slidecontainer'>
                 <input
                     type="range"

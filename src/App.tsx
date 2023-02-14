@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
+import './App.scss'
 
 export function App() {
     const [autoPrice, setAutoPrice] = React.useState('3300000')
@@ -12,81 +13,71 @@ export function App() {
     }, [autoPrice, initialFee, leasingTerm])
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        }}>
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    gap: '50px',
-                    height: '850px',
-                    padding: '48px',
-                    maxWidth: '1440px'
-                }}>
-                <h1 style={{ width: '60%' }}>Рассчитайте стоимость автомобиля в лизинг</h1>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: '32px'
-                    }}>
-
+        <div className="app_wrapper">
+            <div className="content">
+                <h1 className="label">Рассчитайте стоимость автомобиля в лизинг</h1>
+                <div className="row_wrapper">
                     <div>
-                        <p style={{ paddingBottom: '24px' }}>Стоимость автомобиля</p>
                         <Input
+                            label="Стоимость автомобиля"
                             min={1500000}
                             max={10000000}
-                            value={String(autoPrice)}
+                            value={autoPrice}
                             onChange={setAutoPrice}
-                        />
+                        >
+                            <h2 className="car_price_input">₽</h2>
+                        </Input>
                     </div>
                     <div>
-                        <p style={{ paddingBottom: '24px' }}>Первоначальный взнос</p>
                         <Input
+                            label="Первоначальный взнос"
                             min={Number(autoPrice) * 0.1}
                             max={Number(autoPrice) * 0.6}
                             value={String(Math.ceil(Number(initialFee)))}
-                            onChange={setInitialFee} />
+                            onChange={setInitialFee}
+                        // percent={Math.ceil(100 / (Number(autoPrice) / Math.ceil(Number(initialFee))))}
+                        >
+                            <div className="initial_fee_input">
+                                <h3>
+                                    {Math.ceil(100 / (Number(autoPrice) / Math.ceil(Number(initialFee))))}%
+                                </h3>
+                            </div>
+                        </Input>
                     </div>
                     <div>
-                        <p style={{ paddingBottom: '24px' }}>Срок лизинга</p>
                         <Input
+                            label="Срок лизинга"
                             min={6}
                             max={120}
                             value={leasingTerm}
                             onChange={setLeasingTerm}
-                        />
+                        >
+                            <h2 className="leasing_term">мес.</h2>
+                        </Input>
                     </div>
                 </div>
-                <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'row',
-                        gap: '32px'
-                    }}>
-                    <div
-                        style={{ width: '426px' }}
-                    >
-                        <p style={{ paddingBottom: '8px' }}>
-                            Сумма договора лизинга
-                        </p>
-                        <h1>{Math.ceil(Number(initialFee) + Number(leasingTerm) * calc)}₽</h1>
+                <div className="row_wrapper">
+                    <div className="sum_wrapper">
+                        <div className="column_wrapper">
+                            <p className="column_label">
+                                Сумма договора лизинга
+                            </p>
+                            <h1 className="sum_label">
+                                {String(Math.ceil(Number(initialFee) + Number(leasingTerm) * calc))
+                                    .replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} ₽
+                            </h1>
+                        </div>
+                        <div className="column_wrapper">
+                            <p className="column_label">
+                                Ежемесячный платеж от
+                            </p>
+                            <h1 className="sum_label">
+                                {String(Math.ceil(calc))
+                                    .replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} ₽
+                            </h1>
+                        </div>
                     </div>
-                    <div
-                        style={{ width: '426px' }}
-                    >
-                        <p style={{ paddingBottom: '8px' }}>
-                            Ежемесячный платеж от
-                        </p>
-                        <h1>{Math.ceil(calc)} ₽</h1>
-                    </div>
-                    <div
-                        style={{ width: '426px' }}
-                    >
+                    <div className="column_wrapper">
                         <Button>Оставить заявку</Button>
                     </div>
                 </div>

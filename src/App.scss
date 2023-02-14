@@ -1,0 +1,85 @@
+.app_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (max-width: 1440px) {
+        display: block;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;
+    height: 850px;
+    padding: 48px;
+    max-width: 1440px;
+
+    @media (max-width: 768px) {
+        padding: 20px;
+        height: auto;
+    }
+}
+
+.label {
+    width: 60%;
+}
+
+.row_wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+}
+
+.column_wrapper {
+    width: 426px;
+
+    @media (max-width: 1120px) {
+        width: 320px;
+    }
+}
+
+.column_label {
+    padding-bottom: 8px;
+
+    @media (max-width: 320px) {
+        padding-bottom: 2px;
+    }
+}
+
+.sum_wrapper {
+    display: flex;
+    gap: 32px;
+
+    @media (max-width: 320px) {
+        flex-direction: column;
+    }
+}
+
+.sum_label {
+    color: #333333
+}
+
+.car_price_input {
+    padding: 15px 17px;
+}
+
+.initial_fee_input {
+    background: #EBEBEC;
+    padding: 15px 17px;
+    border-radius: 16px;
+
+    @media (max-width: 320px) {
+        padding: 14px;
+    }
+}
+
+.leasing_term {
+    padding: 14px;
+}
