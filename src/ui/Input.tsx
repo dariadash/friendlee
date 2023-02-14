@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './Input.module.css'
+import './Input.scss'
 
 type Props = {
     onChange: (s: string) => void,
@@ -7,9 +7,8 @@ type Props = {
     placeholder?: string,
     type?: string
     disabled?: boolean
-    onClick?: () => void,
-    min?: string,
-    max?: string
+    min: number,
+    max: number
 }
 
 export const Input: React.FC<Props> = ({
@@ -18,35 +17,33 @@ export const Input: React.FC<Props> = ({
     value,
     placeholder,
     disabled,
-    onClick,
     min,
     max
 }) => {
-    const containerRef = React.useRef<HTMLInputElement>(null)
-    const handleFocus = () => {
-        if (onClick) {
-            onClick()
-        }
-        containerRef.current?.focus()
-    }
+
+    const getBackgroundSize = () => {
+        return { backgroundSize: `${Math.ceil((Number(value) * 100) / max)}% 100%` };
+    };
+
     return (
-        <div className={style.wrapper}>
-            <div
-                ref={containerRef}
-                onClick={handleFocus}
-                className={style.container}
-            >
+        <div className='wrapper'>
+            <input
+                disabled={disabled}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                className='input_element'
+            />
+            <div className='slidecontainer'>
                 <input
-                    disabled={disabled}
-                    type={type}
-                    placeholder={placeholder}
+                    type="range"
+                    min={min}
+                    max={max}
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
-                    className={style.input_element}
+                    style={getBackgroundSize()}
                 />
-                <div className={style.slidecontainer}>
-                    <input type="range" min={min} max={max} value={value} className={style.slider} id="myRange"></input>
-                </div>
             </div>
         </div>
     )

@@ -1,17 +1,11 @@
+@import url("fonts/gilroy/style.css");
+@import url("fonts/nekst/style.css");
+
 :root {
-    font-family: 'Inter', sans-serif;
-
-    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-        'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-        'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace, 'Inter';
-
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+    font-family: 'Gilroy', sans-serif;
 
     --background: #F3F3F4;
 
-    --input-color: #A2CBFB;
     --button-background: #FF9514;
     --button-color: #FFFFFF;
     --button-hover: #111111;
@@ -51,7 +45,7 @@ a:hover {
 }
 
 h1 {
-    font-family: 'Nekst-Black', sans-serif;
+    font-family: 'Nekst', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 54px;
@@ -59,7 +53,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Nekst-Black';
+    font-family: 'Nekst', sans-serif;
     font-style: normal;
     font-weight: 900;
     font-size: 30px;
