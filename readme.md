@@ -1,6 +1,4 @@
-# React Boilerplate 
-
-В данном бойлерплейте установлен и настроен webpack для продакшн, дев окружения. Стек React/Redux(toolkit)/TS.
+# Friendlee-test-task 
 
 ## Используемые пакеты
 
@@ -9,7 +7,7 @@
 - Typescript 
 - Webpack 5
 - Babel  
-- StyledComponents 
+- scss 
 
 ## Запуск dev среды 
 
@@ -29,4 +27,3 @@ npm run build
 
 - `npm run lint` Запуск eslint 
 - `npm run lint:fix` Запуск фиксов eslint 
-- `npm run test` Запуск тестов через Mocha 

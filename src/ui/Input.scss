@@ -1,12 +1,9 @@
 .wrapper {
     width: 100%;
     position: relative;
-    width: -moz-available;
-    width: -webkit-fill-available;
-    width: fill-available;
 }
 
-.wrapper:disabled {
+.wrapper[disabled] {
     opacity: 0.4;
 }
 
@@ -24,7 +21,7 @@
     align-items: flex-start;
     background: var(--background);
 
-    padding: 14px 24px;
+    padding: 16px 95px 16px 24px;
     width: 100%;
     border: 2px solid var(--background);
     border-radius: 16px;
@@ -45,6 +42,10 @@
     background: #ffffff;
     border-radius: 16px;
     outline: none;
+}
+
+.input_element:disabled {
+    opacity: 0.4;
 }
 
 .children {
@@ -100,4 +101,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 input[type="range"]:active::-webkit-slider-thumb {
     cursor: grabbing;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

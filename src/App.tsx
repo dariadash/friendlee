@@ -1,15 +1,28 @@
 import React from "react";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
+import { splitValue, stringRoundValue } from "./features/helpers";
 import './App.scss'
 
 export function App() {
-    const [autoPrice, setAutoPrice] = React.useState('3300000')
-    const [initialFee, setInitialFee] = React.useState('420000')
+    const [autoPrice, setAutoPrice] = React.useState('3 300 000')
+    const [initialFee, setInitialFee] = React.useState('420 000')
     const [leasingTerm, setLeasingTerm] = React.useState('60')
 
-    const calc = React.useMemo(() => {
-        return (Number(autoPrice) - Number(initialFee)) * (0.05 * Math.pow((1 + 0.05), Number(leasingTerm)) / (Math.pow((1 + 0.05), Number(leasingTerm)) - 1))
+    const monthlyPayment = React.useMemo(() => {
+        return (
+            Number(splitValue(autoPrice)) -
+            Number(splitValue(initialFee))) *
+            (0.05 * Math.pow((1 + 0.05), Number(splitValue(leasingTerm))) /
+                (Math.pow((1 + 0.05), Number(splitValue(leasingTerm))) - 1)
+            )
+    }, [autoPrice, initialFee, leasingTerm])
+
+    const leasingAmount = React.useMemo(() => {
+        return (
+            Number(splitValue(initialFee)) +
+            Number(splitValue(leasingTerm)) * monthlyPayment
+        )
     }, [autoPrice, initialFee, leasingTerm])
 
     return (
@@ -22,7 +35,7 @@ export function App() {
                             label="Стоимость автомобиля"
                             min={1500000}
                             max={10000000}
-                            value={autoPrice}
+                            value={splitValue(autoPrice)}
                             onChange={setAutoPrice}
                         >
                             <h2 className="car_price_input">₽</h2>
@@ -31,15 +44,14 @@ export function App() {
                     <div>
                         <Input
                             label="Первоначальный взнос"
-                            min={Number(autoPrice) * 0.1}
-                            max={Number(autoPrice) * 0.6}
-                            value={String(Math.ceil(Number(initialFee)))}
+                            min={splitValue(autoPrice) * 0.1}
+                            max={splitValue(autoPrice) * 0.6}
+                            value={stringRoundValue(splitValue(initialFee))}
                             onChange={setInitialFee}
-                        // percent={Math.ceil(100 / (Number(autoPrice) / Math.ceil(Number(initialFee))))}
                         >
                             <div className="initial_fee_input">
                                 <h3>
-                                    {Math.ceil(100 / (Number(autoPrice) / Math.ceil(Number(initialFee))))}%
+                                    {Math.ceil(100 / (splitValue(autoPrice) / splitValue(initialFee)))}%
                                 </h3>
                             </div>
                         </Input>
@@ -49,7 +61,7 @@ export function App() {
                             label="Срок лизинга"
                             min={6}
                             max={120}
-                            value={leasingTerm}
+                            value={splitValue(leasingTerm)}
                             onChange={setLeasingTerm}
                         >
                             <h2 className="leasing_term">мес.</h2>
@@ -63,7 +75,7 @@ export function App() {
                                 Сумма договора лизинга
                             </p>
                             <h1 className="sum_label">
-                                {String(Math.ceil(Number(initialFee) + Number(leasingTerm) * calc))
+                                {stringRoundValue(leasingAmount)
                                     .replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} ₽
                             </h1>
                         </div>
@@ -72,7 +84,7 @@ export function App() {
                                 Ежемесячный платеж от
                             </p>
                             <h1 className="sum_label">
-                                {String(Math.ceil(calc))
+                                {stringRoundValue(monthlyPayment)
                                     .replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')} ₽
                             </h1>
                         </div>
