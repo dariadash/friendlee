@@ -16,7 +16,7 @@ export const Button: React.FC<Props> = ({ children, onClick, disabled, type, loa
             onClick={disabled ? () => { } : onClick}
             disabled={disabled}>
             {loading
-                ? <div className="lds-ring" ><div /><div /><div /><div /></div>
+                ? <div className="button__lds-ring" ><div /><div /><div /><div /></div>
                 : children
             }
         </button >

@@ -39,8 +39,8 @@ export const Input: React.FC<Props> = ({
     }
 
     return (
-        <div className='wrapper' aria-disabled={disabled}>
-            <p className='input_label'>{label}</p>
+        <div className='input__wrapper' aria-disabled={disabled}>
+            <p className='input__label'>{label}</p>
             <div onMouseLeave={() => setV(clampValue(parseInt(v), min, max))}>
                 <input
                     type={type}
@@ -48,10 +48,12 @@ export const Input: React.FC<Props> = ({
                     placeholder={placeholder}
                     value={v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
                     onChange={(e) => handleChange(e.target.value)}
-                    className='input_element'
+                    className='input__element'
                 />
-                <div className='children'>{children}</div>
-                <div className='slidecontainer'>
+                <div className='input__children'>
+                    {children}
+                </div>
+                <div className='input__slide-container'>
                     <input
                         type="range"
                         min={min}

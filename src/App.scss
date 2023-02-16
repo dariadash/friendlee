@@ -1,4 +1,4 @@
-.app_wrapper {
+.app {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
     }
 }
 
-.content {
+.app__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,7 +29,20 @@
     }
 }
 
-.parent {
+.app__label {
+    width: 60%;
+
+    @media (max-width: 1120px) {
+        margin-bottom: 32px;
+        width: 90%;
+    }
+
+    @media (max-width: 768px) {
+        margin-bottom: 32px;
+    }
+}
+
+.app__parent-element {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -47,34 +60,7 @@
     }
 }
 
-.label {
-    width: 60%;
-
-    @media (max-width: 1120px) {
-        margin-bottom: 32px;
-        width: 90%;
-    }
-
-    @media (max-width: 768px) {
-        margin-bottom: 32px;
-    }
-}
-
-.column_wrapper {
-    @media screen and (min-width: 768px) and (max-width: 1120px) {
-        width: 345px;
-    }
-}
-
-.column_label {
-    padding-bottom: 8px;
-
-    @media (max-width: 768px) {
-        padding-bottom: 2px;
-    }
-}
-
-.sum_wrapper {
+.app__amount-element {
     grid-area: 2 / 1 / 3 / 3;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -92,7 +78,21 @@
     }
 }
 
-.sum_label {
+.app__amount-column {
+    @media screen and (min-width: 768px) and (max-width: 1120px) {
+        width: 345px;
+    }
+}
+
+.app__amount-column-label {
+    padding-bottom: 8px;
+
+    @media (max-width: 768px) {
+        padding-bottom: 2px;
+    }
+}
+
+.app__amount {
     color: #333333;
 
     @media (max-width: 768px) {
@@ -101,17 +101,17 @@
     }
 }
 
-.button {
+.app__button {
     @media (max-width: 768px) {
         margin-top: 8px;
     }
 }
 
-.car_price_input {
+.app__car-price-input {
     padding: 15px 17px;
 }
 
-.initial_fee_input {
+.app__initial-fee-input {
     background: #EBEBEC;
     padding: 15px 17px;
     border-radius: 16px;
@@ -121,6 +121,6 @@
     }
 }
 
-.leasing_term {
+.app__leasing-term-input {
     padding: 14px;
 }

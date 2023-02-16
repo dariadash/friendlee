@@ -42,14 +42,14 @@ button:disabled {
     pointer-events: none;
 }
 
-.lds-ring {
+.button__lds-ring {
     display: inline-block;
     position: relative;
     width: 36px;
     height: 36px;
 }
 
-.lds-ring div {
+.button__lds-ring div {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -58,23 +58,23 @@ button:disabled {
     margin: 2px;
     border: 2px solid #fff;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: button__lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     border-color: #fff transparent transparent transparent;
 }
 
-.lds-ring div:nth-child(1) {
+.button__lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
 }
 
-.lds-ring div:nth-child(2) {
+.button__lds-ring div:nth-child(2) {
     animation-delay: -0.3s;
 }
 
-.lds-ring div:nth-child(3) {
+.button__lds-ring div:nth-child(3) {
     animation-delay: -0.15s;
 }
 
-@keyframes lds-ring {
+@keyframes button__lds-ring {
     0% {
         transform: rotate(0deg);
     }

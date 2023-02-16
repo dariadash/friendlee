@@ -1,29 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface JsonState {
-    autoPrice: string,
-    initialFee: string,
-    leasingTerm: string,
-    leasingAmount: string,
-    monthlyPayment: string,
+    data: {
+        autoPrice: string,
+        initialFee: string,
+        leasingTerm: string,
+        leasingAmount: string,
+        monthlyPayment: string,
+    },
+    buttonDisabled: boolean
 }
 
 const initialState: JsonState = {
-    autoPrice: '',
-    initialFee: '',
-    leasingTerm: '',
-    leasingAmount: '',
-    monthlyPayment: '',
+    data: {
+        autoPrice: '',
+        initialFee: '',
+        leasingTerm: '',
+        leasingAmount: '',
+        monthlyPayment: '',
+    },
+    buttonDisabled: false
 }
 
 export const jsonSlice = createSlice({
     name: 'json',
     initialState,
     reducers: {
-        createJson: (state, action: PayloadAction<JsonState>) => {
-            state = action.payload
-            alert(JSON.stringify(state))
+        createJson: (state, action) => {
+            state.data = action.payload
+            state.buttonDisabled = true
+            alert(JSON.stringify(state.data))
         },
     },
 })
