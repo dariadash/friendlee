@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import initReducer from './calculator/initSlice'
+import jsonReducer from './initJson/jsonSlice'
 
 const rootReducer = combineReducers({
-    initReducer,
+    jsonReducer,
 })
 
 export const setupStore = () => {

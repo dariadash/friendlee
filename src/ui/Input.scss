@@ -10,7 +10,7 @@
 .input_label {
     padding-bottom: 24px;
 
-    @media (max-width: 320px) {
+    @media (max-width: 768px) {
         padding-bottom: 8px;
     }
 }
@@ -31,9 +31,11 @@
     font-weight: 900;
     font-family: 'Nekst', sans-serif;
 
-    @media (max-width: 320px) {
+    @media (max-width: 768px) {
         font-size: 22px;
         line-height: 20px;
+
+        padding: 20px 95px 20px 20px;
     }
 }
 

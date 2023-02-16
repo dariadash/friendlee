@@ -1,4 +1,4 @@
-import { splitValue } from '@/features/helpers'
+import { clampValue, splitValue } from '@/features/helpers'
 import React from 'react'
 import './Input.scss'
 
@@ -32,20 +32,16 @@ export const Input: React.FC<Props> = ({
     const [v, setV] = React.useState(value)
     React.useEffect(() => handleChange(value), [value])
 
-    const clampVal = (val, min, max) => {
-        return val < min ?
-            min : val > max ?
-                max : val
-    }
 
     const handleChange = (val: string) => {
         setV(splitValue(val))
+        onChange(val)
     }
 
     return (
         <div className='wrapper' aria-disabled={disabled}>
             <p className='input_label'>{label}</p>
-            <div onMouseLeave={() => setV(clampVal(parseInt(v), min, max))}>
+            <div onMouseLeave={() => setV(clampValue(parseInt(v), min, max))}>
                 <input
                     type={type}
                     disabled={disabled}
@@ -60,8 +56,8 @@ export const Input: React.FC<Props> = ({
                         type="range"
                         min={min}
                         max={max}
-                        value={value}
-                        onChange={(e) => onChange(e.target.value)}
+                        value={splitValue(value)}
+                        onChange={(e) => handleChange(e.target.value)}
                         style={getBackgroundSize()}
                     />
                 </div>

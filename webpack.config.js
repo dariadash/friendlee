@@ -14,7 +14,7 @@ module.exports = {
         publicPath: process.env.PUBLIC_PATH,
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
     module: {
         rules: [

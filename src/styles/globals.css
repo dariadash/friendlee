@@ -58,7 +58,7 @@ h1 {
 
 }
 
-@media (max-width: 320px) {
+@media (max-width: 768px) {
     h1 {
         font-size: 34px;
         line-height: 90%;
@@ -74,7 +74,7 @@ h2 {
     color: #575757;
 }
 
-@media (max-width: 320px) {
+@media (max-width: 768px) {
     h2 {
         font-size: 22px;
         line-height: 20px;
@@ -90,14 +90,15 @@ h3 {
     color: #575757;
 }
 
-.p1 {
+p {
     font-weight: 400;
     font-size: 16px;
-    line-height: 140%;
+    line-height: 20px;
 }
 
-.p2 {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
+@media (max-width: 768px) {
+    p {
+        font-size: 14px;
+        line-height: 136%;
+    }
 }
