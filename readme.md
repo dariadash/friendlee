@@ -1,4 +1,4 @@
-# Friendlee-test-task 
+# Friendlee
 
 ## Используемые пакеты
 
